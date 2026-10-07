@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ms. Fenton | High School Educator & Instructional Innovator</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        accent: {
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.6);
+        }
+        .dark .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(55, 65, 81, 0.5);
+        }
+        .custom-glow {
+            box-shadow: 0 0 25px -5px rgba(20, 184, 166, 0.25);
+        }
+        .dark .custom-glow {
+            box-shadow: 0 0 30px -5px rgba(20, 184, 166, 0.15);
+        }
+        .clipboard-paper {
+            background-color: #fcfbf7;
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 16px 16px;
+        }
+        .dark .clipboard-paper {
+            background-color: #1a202c;
+            background-image: radial-gradient(#2d3748 1px, transparent 1px);
+            background-size: 16px 16px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-40 glass-card border-b transition-all duration-300">
+        <div class="max-w-7xl mx-mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between mx-auto">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-accent-600 flex items-center justify-center text-white font-bold shadow-md group-hover:scale-105 transition-transform">
+                    MF
+                </div>
+                <div>
+                    <span id="nav-name" class="font-bold text-lg leading-none block">Ms. Fenton</span>
+                    <span id="nav-title" class="text-xs text-slate-500 dark:text-slate-400 font-medium">11th Grade Gov & Econ</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+                <a href="#about" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">About</a>
+                <a href="#innovations" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors flex items-center gap-1">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-brand-500"></i> Instructional Tools
+                </a>
+                <a href="#cstp" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">CSTP Reflections</a>
+                <a href="#experience" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Experience</a>
+                <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Contact</a>
+            </div>
+
+            <!-- Controls & Actions -->
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" title="Toggle Theme">
+                    <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+
+                <button onclick="toggleEditDrawer()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 transition-colors">
+                    <i data-lucide="edit-3" class="w-3.5 h-3.5 text-brand-500"></i>
+                    <span>Live Edit</span>
+                </button>
+
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-brand-600 hover:bg-brand-700 text-white shadow-sm hover:shadow transition-all">
+                    <span>Connect</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </a>
+
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pt-2 pb-4 space-y-3">
+            <a href="#about" class="block py-2 text-sm font-medium hover:text-brand-500">About</a>
+            <a href="#innovations" class="block py-2 text-sm font-medium hover:text-brand-500">Instructional Tools</a>
+            <a href="#cstp" class="block py-2 text-sm font-medium hover:text-brand-500">CSTP Reflections</a>
+            <a href="#experience" class="block py-2 text-sm font-medium hover:text-brand-500">Experience</a>
+            <a href="#contact" class="block py-2 text-sm font-medium hover:text-brand-500">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero / Bio Section -->
+    <section id="about" class="pt-28 pb-16 lg:pt-36 lg:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="absolute inset-0 -z-10 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-brand-500/10 blur-3xl"></div>
+            <div class="absolute top-60 -left-40 w-96 h-96 rounded-full bg-accent-500/10 blur-3xl"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800/50">
+                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                    <span>Contributing to the Profession & Instructional Design</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+                    <span id="hero-name">Ms. Fenton</span>
+                    <span class="block text-2xl sm:text-3xl lg:text-4xl font-serif text-brand-600 dark:text-brand-400 font-normal italic mt-2">
+                        High School Educator & Instructional Innovator
+                    </span>
+                </h1>
+
+                <p id="hero-bio" class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+                    Specializing in 11th Grade Government, Economics, and data-driven curriculum scaffolding. Dedicated to transforming classroom management and student engagement through real-time formative grouping and mastery-based Project Based Learning (PBL).
+                </p>
+
+                <!-- Quick Stats Badges -->
+                <div class="grid grid-cols-3 gap-4 py-3 max-w-xl">
+                    <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center">
+                        <span id="stat-1" class="text-2xl sm:text-3xl font-extrabold text-brand-600 dark:text-brand-400 block">90%+</span>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1 block">Exit Ticket Success</span>
+                    </div>
+                    <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center">
+                        <span id="stat-2" class="text-2xl sm:text-3xl font-extrabold text-accent-600 dark:text-accent-500 block">3-Tier</span>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1 block">Grouping Model</span>
+                    </div>
+                    <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center">
+                        <span id="stat-3" class="text-2xl sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 block">5-Week</span>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1 block">PBL Scaffold</span>
+                    </div>
+                </div>
+
+                <!-- CTAs -->
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#innovations" class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm shadow-lg shadow-brand-500/20 flex items-center gap-2 transition-all hover:scale-[1.02]">
+                        <i data-lucide="play-circle" class="w-4 h-4"></i>
+                        <span>Explore Interactive Tools</span>
+                    </a>
+                    <button onclick="downloadResume()" class="px-6 py-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 font-medium text-sm flex items-center gap-2 transition-all">
+                        <i data-lucide="download" class="w-4 h-4 text-slate-500"></i>
+                        <span>Download CV / Resume</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hero Feature Card -->
+            <div class="lg:col-span-5">
+                <div class="relative mx-auto max-w-md lg:max-w-none">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-500 to-accent-600 rounded-3xl rotate-2 blur-sm opacity-30"></div>
+                    <div class="relative glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-brand-100 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+                                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 dark:text-white">Teaching Philosophy</h3>
+                                    <p class="text-xs text-slate-500">Equitable & Scaffolding-First</p>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">PBL Standard</span>
+                        </div>
+
+                        <blockquote class="text-sm italic text-slate-600 dark:text-slate-300 leading-relaxed font-serif">
+                            "By combining rigorous Tier 3 academic vocabulary with real-time formative entry tickets and targeted 5-minute back-table interventions, every student achieves critical economic literacy and civic voice."
+                        </blockquote>
+
+                        <div class="space-y-3 pt-2">
+                            <div class="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-400">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-500 shrink-0"></i>
+                                <span>Real-time entrance ticket tiering for collaborative groupings</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-400">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-500 shrink-0"></i>
+                                <span>Strategic defense packets for student economic business fairs</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-400">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-500 shrink-0"></i>
+                                <span>Two-lap clipboard monitoring for instant data feedback</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: INTERACTIVE TEACHING SHOWCASE -->
+    <section id="innovations" class="py-16 lg:py-24 bg-slate-100/70 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Contributing to the Profession</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">Interactive Teaching Innovations</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base">
+                    Test drive Ms. Fenton's signature classroom tools directly below. These frameworks empower data-driven instruction in real time.
+                </p>
+            </div>
+
+            <!-- TOOL 1: THE ACCURACY LAP CLIPBOARD -->
+            <div class="mb-16 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
+                <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-semibold mb-2">
+                            <i data-lucide="clipboard-check" class="w-3.5 h-3.5"></i> Tool #1
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">The Accuracy Lap Clipboard</h3>
+                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+                            A dual-lap formative tracking system: Lap 1 verifies work start compliance, Lap 2 targets deep conceptual accuracy.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-semibold text-slate-500">Lap Filter:</span>
+                        <div class="inline-flex rounded-xl p-1 bg-slate-200 dark:bg-slate-800 text-xs font-medium">
+                            <button id="btn-lap1" onclick="setLapMode('lap1')" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm transition-all">Lap 1: Compliance</button>
+                            <button id="btn-lap2" onclick="setLapMode('lap2')" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 transition-all">Lap 2: Accuracy</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Interactive Clipboard Desk -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="clipboard-paper p-5 sm:p-6 rounded-2xl border border-slate-300 dark:border-slate-700 shadow-inner">
+                            <div class="flex justify-between items-center pb-4 border-b border-slate-300 dark:border-slate-700">
+                                <div>
+                                    <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200 uppercase tracking-wide">Period 3: Economics Live Roster</h4>
+                                    <p class="text-xs text-slate-500">Click student badges to simulate live lap observations</p>
+                                </div>
+                                <span id="current-lap-badge" class="px-2.5 py-1 rounded-md text-xs font-bold bg-brand-500 text-white">Lap 1 Active</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4" id="student-roster-container">
+                                <!-- Dynamic Student Roster Items Inserted Here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Reteach Script Generator -->
+                    <div class="lg:col-span-5 flex flex-col justify-between rounded-2xl bg-slate-900 text-white p-6 shadow-lg">
+                        <div>
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                                <h4 class="font-bold text-sm text-brand-400 flex items-center gap-2">
+                                    <i data-lucide="zap" class="w-4 h-4"></i> 5-Minute Back-Table Reteach
+                                </h4>
+                                <span id="flagged-count" class="text-xs px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 font-mono">0 Flagged</span>
+                            </div>
+
+                            <div class="mt-4 space-y-3 text-xs">
+                                <p class="text-slate-400">Target Grouping:</p>
+                                <div id="reteach-target-list" class="font-mono text-slate-300 bg-slate-800/80 p-2.5 rounded-xl border border-slate-700 min-h-[48px] flex flex-wrap gap-1.5 items-center">
+                                    <span class="text-slate-500 italic">No students flagged for reteach. Toggle student status on clipboard.</span>
+                                </div>
+
+                                <div class="space-y-2 pt-2">
+                                    <span class="text-slate-400 font-medium">Generated Micro-Script:</span>
+                                    <div id="reteach-script" class="p-3 bg-slate-800/50 rounded-xl border border-slate-700/60 text-slate-300 leading-relaxed italic">
+                                        "Select students on Lap 2 who demonstrate misconceptions in supply-demand elasticity to launch the 5-minute back-table scaffold script."
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+                            <span class="text-slate-400">Impact Metric:</span>
+                            <span class="font-bold text-emerald-400">Eliminates whole-class downtime</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOOL 2: THE BOOTCAMP ENTRANCE TICKET & TIERING CALCULATOR -->
+            <div class="mb-16 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
+                <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-indigo-100 dark:bg-indigo-950/60 text-indigo-800 dark:text-indigo-300 text-xs font-semibold mb-2">
+                        <i data-lucide="layers" class="w-3.5 h-3.5"></i> Tool #2
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">The Bootcamp — Entrance Ticket & Real-Time Tiering</h3>
+                    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+                        Adjust score sliders below (0-4 DOK scale) to experience how automated entry tickets automatically form 3-tiered instruction groups within 60 seconds of class start.
+                    </p>
+                </div>
+
+                <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Controls -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="space-y-4">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">Sample Class Score Distribution</label>
+                            
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="font-medium text-slate-700 dark:text-slate-300">Level 1: Novice (Score 0-1)</span>
+                                    <span id="tier1-val" class="font-mono font-bold text-rose-500">25%</span>
+                                </div>
+                                <input id="tier1-slider" type="range" min="0" max="100" value="25" oninput="updateTieringWidget()" class="w-full accent-rose-500">
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="font-medium text-slate-700 dark:text-slate-300">Level 2: Practicing (Score 2-3)</span>
+                                    <span id="tier2-val" class="font-mono font-bold text-amber-500">50%</span>
+                                </div>
+                                <input id="tier2-slider" type="range" min="0" max="100" value="50" oninput="updateTieringWidget()" class="w-full accent-amber-500">
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="font-medium text-slate-700 dark:text-slate-300">Level 3: Mastery (Score 4)</span>
+                                    <span id="tier3-val" class="font-mono font-bold text-emerald-500">25%</span>
+                                </div>
+                                <input id="tier3-slider" type="range" min="0" max="100" value="25" oninput="updateTieringWidget()" class="w-full accent-emerald-500">
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300">
+                            <i data-lucide="info" class="w-4 h-4 text-brand-500 inline mr-1"></i>
+                            Entry ticket Google Forms automatically parse response data into these 3 cohorts instantly when the bell rings.
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Visual Tier Split -->
+                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="p-5 rounded-2xl bg-rose-50/60 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                                    <span id="tier1-pct-badge" class="text-xs font-bold font-mono px-2 py-0.5 rounded bg-rose-200 dark:bg-rose-900 text-rose-800 dark:text-rose-200">25%</span>
+                                </div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Tier 1: Teacher Table</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
+                                    Direct guided instruction & targeted re-teaching.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-rose-200 dark:border-rose-900/50 text-[11px] font-medium text-rose-700 dark:text-rose-300">
+                                Action: 8-min Direct Intervention
+                            </div>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                                    <span id="tier2-pct-badge" class="text-xs font-bold font-mono px-2 py-0.5 rounded bg-amber-200 dark:bg-amber-900 text-amber-800 dark:text-amber-200">50%</span>
+                                </div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Tier 2: Peer Collaborative</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
+                                    Structured pair work with guided graphic organizers.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-amber-200 dark:border-amber-900/50 text-[11px] font-medium text-amber-700 dark:text-amber-300">
+                                Action: Structured Peer Reciprocal
+                            </div>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                                    <span id="tier3-pct-badge" class="text-xs font-bold font-mono px-2 py-0.5 rounded bg-emerald-200 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200">25%</span>
+                                </div>
+                                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Tier 3: Autonomous Synthesis</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">
+                                    Advanced application & peer-mentorship roles.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-emerald-200 dark:border-emerald-900/50 text-[11px] font-medium text-emerald-700 dark:text-emerald-300">
+                                Action: Extension & Strategic Defense
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOOL 3: FOUNDER'S DICTIONARY & SENTENCE FRAME BUILDER -->
+            <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
+                <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-purple-100 dark:bg-purple-950/60 text-purple-800 dark:text-purple-300 text-xs font-semibold mb-2">
+                        <i data-lucide="book-open" class="w-3.5 h-3.5"></i> Tool #3
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Founder's Dictionary & Defense Frame Builder</h3>
+                    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+                        Scaffolding Tier-3 Economics and Government terms for the 5-week PBL Business Fair defense. Select a term to test the sentence frame generator.
+                    </p>
+                </div>
+
+                <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Term Selector List -->
+                    <div class="lg:col-span-5 space-y-2" id="vocab-buttons-container">
+                        <!-- Dynamic Buttons Inserted -->
+                    </div>
+
+                    <!-- Sentence Frame Generator Preview -->
+                    <div class="lg:col-span-7 bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-200 dark:border-slate-700/60 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-700">
+                                <div>
+                                    <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Selected Term</span>
+                                    <h4 id="vocab-title" class="text-xl font-bold text-slate-900 dark:text-white">Insolvency</h4>
+                                </div>
+                                <span id="vocab-category" class="px-2.5 py-1 rounded-md text-xs font-semibold bg-brand-100 text-brand-800 dark:bg-brand-950 dark:text-brand-300">Macroeconomics</span>
+                            </div>
+
+                            <div class="mt-4 space-y-4 text-xs sm:text-sm">
+                                <div>
+                                    <span class="text-slate-400 text-xs font-bold uppercase">Plain-English Student Definition:</span>
+                                    <p id="vocab-def" class="text-slate-700 dark:text-slate-300 mt-1 font-medium">
+                                        The state where a business or individual cannot meet financial obligations or pay debts as they become due.
+                                    </p>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm">
+                                    <span class="text-xs font-bold text-purple-600 dark:text-purple-400 block mb-2">Student Defense Sentence Frame:</span>
+                                    <p id="vocab-frame" class="font-serif italic text-slate-800 dark:text-slate-200 text-base leading-relaxed">
+                                        "Our enterprise mitigates the risk of <span class="text-brand-600 font-semibold underline decoration-dashed">insolvency</span> by maintaining a 20% liquid cash reserve against fixed operational liabilities."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex justify-end">
+                            <button onclick="copySentenceFrame()" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                <span>Copy Sentence Frame</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: CSTP REFLECTIONS / CURRICULUM STANDARDS -->
+    <section id="cstp" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-bold uppercase tracking-wider text-accent-600 dark:text-accent-400">California Standards for the Teaching Profession</span>
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">CSTP Growth & Reflections</h2>
+            <p class="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base">
+                Explore artifacts and reflective evidence aligned with state teaching standards.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Sidebar Standard Selector -->
+            <div class="lg:col-span-4 space-y-2" id="cstp-tabs-container">
+                <!-- Dynamic CSTP Tabs -->
+            </div>
+
+            <!-- Detail Display Panel -->
+            <div class="lg:col-span-8 glass-card rounded-3xl p-6 sm:p-8 shadow-xl relative" id="cstp-detail-panel">
+                <!-- Dynamic CSTP Details -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: EXPERIENCE & EDUCATION TIMELINE -->
+    <section id="experience" class="py-16 lg:py-24 bg-slate-100/70 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Career & Background</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">Professional Experience</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base">
+                    Teaching career milestones, curriculum design experience, and credentials.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto relative border-l-2 border-slate-200 dark:border-slate-800 pl-6 sm:pl-8 space-y-12">
+                <!-- Item 1 -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-5 h-5 rounded-full bg-brand-600 border-4 border-white dark:border-slate-900 group-hover:scale-125 transition-transform"></div>
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-md">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Lead Government & Economics Teacher</h3>
+                                <p class="text-sm font-medium text-brand-600 dark:text-brand-400">High School Social Sciences Department</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 w-fit">2021 — Present</span>
+                        </div>
+                        <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 list-disc list-inside">
+                            <li>Designed and executed 5-week PBL Economics curriculum featuring student-led local enterprise defense panels.</li>
+                            <li>Pioneered "The Accuracy Lap" system, reducing off-task downtime by 40% in 11th-grade classrooms.</li>
+                            <li>Mentored student teacher candidates and led PLC data-analysis sessions for social studies cohorts.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-5 h-5 rounded-full bg-accent-600 border-4 border-white dark:border-slate-900 group-hover:scale-125 transition-transform"></div>
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-md">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Social Studies Educator & Instructional Specialist</h3>
+                                <p class="text-sm font-medium text-accent-600 dark:text-accent-400">Secondary Education District</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 w-fit">2018 — 2021</span>
+                        </div>
+                        <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 list-disc list-inside">
+                            <li>Implemented entrance-ticket tiered groupings across US History and American Government units.</li>
+                            <li>Coordinated cross-curricular literacy scaffolds incorporating Tier 2 and Tier 3 vocabulary frames.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Credentials Item -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-5 h-5 rounded-full bg-emerald-500 border-4 border-white dark:border-slate-900 group-hover:scale-125 transition-transform"></div>
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-md">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="award" class="w-6 h-6 text-emerald-500"></i>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Education & California Credentials</h3>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+                            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                                <span class="font-bold block text-slate-900 dark:text-white">Single Subject Teaching Credential</span>
+                                <span class="text-slate-500">Social Science (California)</span>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                                <span class="font-bold block text-slate-900 dark:text-white">M.A. in Curriculum & Instruction</span>
+                                <span class="text-slate-500">School of Education</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: CONTACT -->
+    <section id="contact" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Get In Touch</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Let's Collaborate on Instructional Design</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+                    Interested in adapting these classroom tools, organizing curriculum workshops, or connecting regarding social science instruction? Send a message below!
+                </p>
+
+                <div class="space-y-4 pt-2">
+                    <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                        <div class="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-950 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Email</span>
+                            <span class="font-semibold">msfenton.teaches@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                        <div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-950 text-accent-600 dark:text-accent-400 flex items-center justify-center shrink-0">
+                            <i data-lucide="globe" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Portfolio Resource Site</span>
+                            <span class="font-semibold">sites.google.com/view/msfentonteaches</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form Card -->
+            <div class="lg:col-span-7">
+                <form onsubmit="handleContactSubmit(event)" class="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
+                            <input type="text" required placeholder="e.g. Principal Davis" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Email Address</label>
+                            <input type="email" required placeholder="you@school.edu" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Subject</label>
+                        <input type="text" required placeholder="Curriculum Inquiry / Workshop Collaboration" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Message</label>
+                        <textarea rows="4" required placeholder="Share your message or questions regarding the instructional tools..." class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg shadow-brand-500/20 transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>Send Message</span>
+                    </button>
+                    <div id="contact-success" class="hidden p-3 rounded-xl bg-emerald-100 text-emerald-800 text-xs font-semibold text-center">
+                        Thank you! Your message simulation has been sent successfully.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>© <span id="year"></span> Ms. Fenton — High School Educator Portfolio. Ready for GitHub Pages hosting.</p>
+            <div class="flex items-center gap-4 text-slate-400">
+                <a href="https://sites.google.com/view/msfentonteaches/contributing-to-the-profession" target="_blank" class="hover:text-brand-500 transition-colors">Original Google Site Source</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SECTION 6: FLOATING LIVE EDIT DRAWER -->
+    <div id="edit-drawer" class="fixed inset-y-0 right-0 w-full sm:w-96 glass-card shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between border-l border-slate-300 dark:border-slate-700">
+        <div class="p-6 overflow-y-auto space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="sliders" class="w-5 h-5 text-brand-500"></i>
+                    <h3 class="font-bold text-slate-900 dark:text-white">Live Profile Customizer</h3>
+                </div>
+                <button onclick="toggleEditDrawer()" class="p-1 rounded-lg text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <p class="text-xs text-slate-500">
+                Edit text here to instantly update your portfolio details before deploying to GitHub Pages!
+            </p>
+
+            <div class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Name</label>
+                    <input id="edit-input-name" type="text" value="Ms. Fenton" oninput="updateProfileData()" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Subjects & Grades</label>
+                    <input id="edit-input-title" type="text" value="11th Grade Gov & Econ" oninput="updateProfileData()" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900">
+                </div>
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Bio Text</label>
+                    <textarea id="edit-input-bio" rows="4" oninput="updateProfileData()" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900">Specializing in 11th Grade Government, Economics, and data-driven curriculum scaffolding. Dedicated to transforming classroom management and student engagement through real-time formative grouping and mastery-based Project Based Learning (PBL).</textarea>
+                </div>
+
+                <div class="pt-2 border-t border-slate-200 dark:border-slate-800 space-y-3">
+                    <label class="block font-bold text-slate-700 dark:text-slate-300">Quick Stats Highlights</label>
+                    <div>
+                        <span class="text-[10px] text-slate-400">Stat #1</span>
+                        <input id="edit-input-stat1" type="text" value="90%+" oninput="updateProfileData()" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900">
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-slate-400">Stat #2</span>
+                        <input id="edit-input-stat2" type="text" value="3-Tier" oninput="updateProfileData()" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900">
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-slate-400">Stat #3</span>
+                        <input id="edit-input-stat3" type="text" value="5-Week" oninput="updateProfileData()" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/80">
+            <button onclick="toggleEditDrawer()" class="w-full py-2.5 rounded-xl bg-brand-600 text-white font-semibold text-xs shadow">
+                Save & Close Drawer
+            </button>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE SCRIPT LOGIC -->
+    <script>
+        // Set dynamic footer year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Dark / Light Theme Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Edit Profile Drawer Toggle
+        function toggleEditDrawer() {
+            const drawer = document.getElementById('edit-drawer');
+            drawer.classList.toggle('translate-x-full');
+        }
+
+        // Live Edit Profile Data Function
+        function updateProfileData() {
+            const nameVal = document.getElementById('edit-input-name').value;
+            const titleVal = document.getElementById('edit-input-title').value;
+            const bioVal = document.getElementById('edit-input-bio').value;
+            const s1Val = document.getElementById('edit-input-stat1').value;
+            const s2Val = document.getElementById('edit-input-stat2').value;
+            const s3Val = document.getElementById('edit-input-stat3').value;
+
+            document.getElementById('nav-name').textContent = nameVal;
+            document.getElementById('hero-name').textContent = nameVal;
+            document.getElementById('nav-title').textContent = titleVal;
+            document.getElementById('hero-bio').textContent = bioVal;
+
+            document.getElementById('stat-1').textContent = s1Val;
+            document.getElementById('stat-2').textContent = s2Val;
+            document.getElementById('stat-3').textContent = s3Val;
+        }
+
+        // --- TOOL 1: ACCURACY LAP CLIPBOARD LOGIC ---
+        let currentLap = 'lap1';
+        const students = [
+            { id: 1, name: 'Marcus A.', statusLap1: 'Compliant', statusLap2: 'Needs Reteach', flagged: true },
+            { id: 2, name: 'Sofia R.', statusLap1: 'Compliant', statusLap2: 'Mastered', flagged: false },
+            { id: 3, name: 'David L.', statusLap1: 'Off-Task', statusLap2: 'Needs Reteach', flagged: true },
+            { id: 4, name: 'Elena K.', statusLap1: 'Compliant', statusLap2: 'Mastered', flagged: false },
+            { id: 5, name: 'Jordan T.', statusLap1: 'Compliant', statusLap2: 'Needs Reteach', flagged: true },
+            { id: 6, name: 'Aaliyah W.', statusLap1: 'Compliant', statusLap2: 'Mastered', flagged: false }
+        ];
+
+        function setLapMode(lap) {
+            currentLap = lap;
+            const b1 = document.getElementById('btn-lap1');
+            const b2 = document.getElementById('btn-lap2');
+            const badge = document.getElementById('current-lap-badge');
+
+            if (lap === 'lap1') {
+                b1.className = 'px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm transition-all';
+                b2.className = 'px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 transition-all';
+                badge.textContent = 'Lap 1 Active (Compliance)';
+                badge.className = 'px-2.5 py-1 rounded-md text-xs font-bold bg-brand-500 text-white';
+            } else {
+                b2.className = 'px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm transition-all';
+                b1.className = 'px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 transition-all';
+                badge.textContent = 'Lap 2 Active (Conceptual Accuracy)';
+                badge.className = 'px-2.5 py-1 rounded-md text-xs font-bold bg-accent-600 text-white';
+            }
+            renderRoster();
+        }
+
+        function toggleStudentFlag(id) {
+            const st = students.find(s => s.id === id);
+            if (st) {
+                st.flagged = !st.flagged;
+                if (st.flagged) st.statusLap2 = 'Needs Reteach';
+                else st.statusLap2 = 'Mastered';
+                renderRoster();
+            }
+        }
+
+        function renderRoster() {
+            const container = document.getElementById('student-roster-container');
+            container.innerHTML = '';
+
+            let flaggedStudents = [];
+
+            students.forEach(st => {
+                if (st.flagged) flaggedStudents.push(st.name);
+
+                const div = document.createElement('div');
+                div.onclick = () => toggleStudentFlag(st.id);
+                div.className = `p-3 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${
+                    st.flagged 
+                        ? 'bg-rose-50/80 border-rose-300 dark:bg-rose-950/40 dark:border-rose-800' 
+                        : 'bg-white/90 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700'
+                }`;
+
+                const isLap1 = currentLap === 'lap1';
+                const statusText = isLap1 ? st.statusLap1 : st.statusLap2;
+                const badgeColor = st.flagged ? 'bg-rose-500 text-white' : 'bg-emerald-500 text-white';
+
+                div.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 rounded-full ${st.flagged ? 'bg-rose-200 text-rose-800' : 'bg-emerald-200 text-emerald-800'} flex items-center justify-center font-bold text-xs">
+                            ${st.name.charAt(0)}
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-slate-800 dark:text-slate-200 block">${st.name}</span>
+                            <span class="text-[10px] text-slate-500 font-medium">${isLap1 ? 'Lap 1 Work Start' : 'Lap 2 Solution Checks'}</span>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded ${badgeColor}">
+                        ${statusText}
+                    </span>
+                `;
+                container.appendChild(div);
+            });
+
+            // Update Reteach Card
+            document.getElementById('flagged-count').textContent = `${flaggedStudents.length} Flagged`;
+            const listEl = document.getElementById('reteach-target-list');
+            const scriptEl = document.getElementById('reteach-script');
+
+            if (flaggedStudents.length > 0) {
+                listEl.innerHTML = flaggedStudents.map(n => `<span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">${n}</span>`).join(' ');
+                scriptEl.textContent = `"Alright team (${flaggedStudents.join(', ')}), let's examine Q2 together at the back table. Notice how demand elasticity shifts when substitutes are readily available..."`;
+            } else {
+                listEl.innerHTML = `<span class="text-slate-500 italic">No students flagged for reteach.</span>`;
+                scriptEl.textContent = `"All students demonstrate mastery on Lap 2 accuracy check! Independent synthesis phase activated."`;
+            }
+        }
+
+        // --- TOOL 2: BOOTCAMP TIERING WIDGET LOGIC ---
+        function updateTieringWidget() {
+            const v1 = parseInt(document.getElementById('tier1-slider').value);
+            const v2 = parseInt(document.getElementById('tier2-slider').value);
+            const v3 = parseInt(document.getElementById('tier3-slider').value);
+
+            const total = v1 + v2 + v3 || 1;
+            const p1 = Math.round((v1 / total) * 100);
+            const p2 = Math.round((v2 / total) * 100);
+            const p3 = 100 - p1 - p2;
+
+            document.getElementById('tier1-val').textContent = p1 + '%';
+            document.getElementById('tier2-val').textContent = p2 + '%';
+            document.getElementById('tier3-val').textContent = p3 + '%';
+
+            document.getElementById('tier1-pct-badge').textContent = p1 + '%';
+            document.getElementById('tier2-pct-badge').textContent = p2 + '%';
+            document.getElementById('tier3-pct-badge').textContent = p3 + '%';
+        }
+
+        // --- TOOL 3: FOUNDER'S DICTIONARY LOGIC ---
+        const vocabBank = [
+            {
+                term: 'Insolvency',
+                category: 'Macroeconomics',
+                def: 'The state where a business or individual cannot meet financial obligations or pay debts as they become due.',
+                frame: '"Our enterprise mitigates the risk of insolvency by maintaining a 20% liquid cash reserve against fixed operational liabilities."'
+            },
+            {
+                term: 'Market Differentiation',
+                category: 'Business Strategy',
+                def: 'The process of distinguishing a product or service from others to make it more attractive to a target market.',
+                frame: '"To achieve competitive advantage, our team established market differentiation by providing 100% locally sourced sustainable materials."'
+            },
+            {
+                term: 'Fiscal Responsibility',
+                category: 'Government & Policy',
+                def: 'The prudent management of public or private finances to ensure long-term stability and eliminate deficit spending.',
+                frame: '"Our proposed budget demonstrates fiscal responsibility by prioritizing high-ROI community initiatives over discretionary expenditures."'
+            },
+            {
+                term: 'Regulatory Mandate',
+                category: 'Civics & Law',
+                def: 'An official requirement or order issued by a government authority that obligates compliance.',
+                frame: '"In response to recent municipal environmental policy, our enterprise fully complies with the new regulatory mandate for zero waste."'
+            }
+        ];
+
+        let selectedVocabIndex = 0;
+
+        function renderVocabButtons() {
+            const container = document.getElementById('vocab-buttons-container');
+            container.innerHTML = '';
+
+            vocabBank.forEach((v, idx) => {
+                const btn = document.createElement('button');
+                btn.onclick = () => selectVocab(idx);
+                btn.className = `w-full text-left p-3.5 rounded-xl border transition-all flex items-center justify-between text-xs sm:text-sm font-semibold ${
+                    idx === selectedVocabIndex
+                        ? 'bg-purple-600 text-white border-purple-600 shadow-md'
+                        : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-purple-400'
+                }`;
+                btn.innerHTML = `
+                    <span>${v.term}</span>
+                    <span class="text-[10px] opacity-80 font-normal font-mono px-2 py-0.5 rounded ${idx === selectedVocabIndex ? 'bg-purple-700 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}">${v.category}</span>
+                `;
+                container.appendChild(btn);
+            });
+        }
+
+        function selectVocab(idx) {
+            selectedVocabIndex = idx;
+            renderVocabButtons();
+            const item = vocabBank[idx];
+            document.getElementById('vocab-title').textContent = item.term;
+            document.getElementById('vocab-category').textContent = item.category;
+            document.getElementById('vocab-def').textContent = item.def;
+            document.getElementById('vocab-frame').innerHTML = item.frame;
+        }
+
+        function copySentenceFrame() {
+            const item = vocabBank[selectedVocabIndex];
+            navigator.clipboard.writeText(item.frame.replace(/"/g, ''));
+            alert('Sentence frame copied to clipboard!');
+        }
+
+        // --- CSTP REFLECTIONS DATA & LOGIC ---
+        const cstpData = [
+            {
+                title: 'CSTP 1: Engaging & Supporting All Students',
+                subtitle: 'Data-Driven Entrance Ticket Cohorts',
+                content: 'Utilizing real-time Google Form entrance ticket data to tier students into targeted cohorts immediately at bellwork. High-need students receive 8 minutes of back-table direct scaffolding while independent learners synthesize real-world economic scenarios.'
+            },
+            {
+                title: 'CSTP 2: Creating Effective Environments',
+                subtitle: 'The Accuracy Lap System',
+                content: 'Structuring two distinct rounds of clipboard classroom walkthroughs. Round 1 ensures rapid task initiation and eliminates downtime. Round 2 targets conceptual accuracy, fostering a warm, highly accountable learning atmosphere.'
+            },
+            {
+                title: 'CSTP 3: Organizing Subject Matter',
+                subtitle: '5-Week PBL Strategic Defense Scaffolds',
+                content: 'Deconstructing complex 11th-grade Economics standards into modular strategic defense packets. Students apply Tier 3 vocabulary (e.g., insolvency, liquidity, market differentiation) in dynamic simulated business fairs.'
+            },
+            {
+                title: 'CSTP 4: Planning Instruction & Learning',
+                subtitle: 'Formative Iteration & Exit Tickets',
+                content: 'Designing lesson plans with continuous data feedback loops. Exit ticket trends directly inform the subsequent day’s entrance ticket cohorts, ensuring no learning gap remains unaddressed.'
+            }
+        ];
+
+        let selectedCstpIndex = 0;
+
+        function renderCstpTabs() {
+            const container = document.getElementById('cstp-tabs-container');
+            container.innerHTML = '';
+
+            cstpData.forEach((item, idx) => {
+                const btn = document.createElement('button');
+                btn.onclick = () => selectCstp(idx);
+                btn.className = `w-full text-left p-4 rounded-2xl border transition-all flex items-center justify-between ${
+                    idx === selectedCstpIndex
+                        ? 'bg-brand-600 text-white border-brand-600 shadow-lg'
+                        : 'bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-800 hover:border-brand-300'
+                }`;
+                btn.innerHTML = `
+                    <div>
+                        <span class="text-xs opacity-80 block uppercase tracking-wider font-semibold">${item.subtitle}</span>
+                        <span class="text-sm font-bold block mt-0.5">${item.title}</span>
+                    </div>
+                    <i data-lucide="chevron-right" class="w-4 h-4 shrink-0"></i>
+                `;
+                container.appendChild(btn);
+            });
+
+            // Update Panel
+            const current = cstpData[selectedCstpIndex];
+            document.getElementById('cstp-detail-panel').innerHTML = `
+                <div class="space-y-4">
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-accent-100 text-accent-800 dark:bg-accent-950 dark:text-accent-300">
+                        ${current.subtitle}
+                    </span>
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">${current.title}</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
+                        ${current.content}
+                    </p>
+                    <div class="pt-6 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
+                        <span>California Teaching Standard Alignment</span>
+                        <span class="font-bold text-brand-600 dark:text-brand-400 flex items-center gap-1">
+                            Verified Artifact <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        </span>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function selectCstp(idx) {
+            selectedCstpIndex = idx;
+            renderCstpTabs();
+        }
+
+        // Contact Submit Mock
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contact-success').classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                document.getElementById('contact-success').classList.add('hidden');
+            }, 4000);
+        }
+
+        // Download CV Simulation
+        function downloadResume() {
+            alert("Downloading Ms. Fenton's Professional CV & Instructional Portfolio summary (PDF)...");
+        }
+
+        // Initialize App on Load
+        window.onload = function() {
+            lucide.createIcons();
+            renderRoster();
+            updateTieringWidget();
+            renderVocabButtons();
+            selectVocab(0);
+            renderCstpTabs();
+        };
+    </script>
+</body>
+</html>
